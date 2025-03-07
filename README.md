@@ -8,10 +8,10 @@ Features
 - Responsive design with Bootstrap.  
 
 Setup
-git clone https://github.com/getNameYoru/django_project_ramillano.git
-cd django_project_ramillano
-pipenv shell
-python manage.py migrate
+git clone https://github.com/getNameYoru/django_project_ramillano.git,
+cd django_project_ramillano,
+pipenv shell,
+python manage.py migrate,
 python manage.py runserver
 
 Access at [http://127.0.0.1:8000](http://127.0.0.1:8000).

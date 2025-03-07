@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if task %}Edit{% else %}Create{% endif %} Task</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">{% if task %}Edit{% else %}Create{% endif %} Task</h2>
+
+        <div class="card shadow p-4">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" id="title" name="title" class="form-control" value="{{ task.title|default_if_none:'' }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="description" name="description" class="form-control">{{ task.description|default_if_none:'' }}</textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="due_date" class="form-label">Due Date</label>
+                    <input type="date" id="due_date" name="due_date" class="form-control" value="{{ task.due_date|date:'Y-m-d' }}" required>
+                </div>
+                <button type="submit" class="btn btn-success">{% if task %}Update{% else %}Create{% endif %} Task</button>
+                <a href="{% url 'task_list' %}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
